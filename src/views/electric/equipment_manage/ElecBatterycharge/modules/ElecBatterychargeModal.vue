@@ -25,6 +25,12 @@
         <a-form-item label="电池使用状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'equesstate', validatorRules.equesstate]" placeholder="请输入电池使用状态"></a-input>
         </a-form-item>
+        <a-form-item label="电池充电详情" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqcharge', validatorRules.eqcharge]" placeholder="请输入电池充电详情"></a-input>
+        </a-form-item>
+        <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqtext', validatorRules.eqtext]" placeholder="请输入备注"></a-input>
+        </a-form-item>
 
       </a-form>
     </a-spin>
@@ -70,6 +76,10 @@
           ]},
           equesstate: {rules: [
           ]},
+          eqcharge: {rules: [
+          ]},
+          eqtext: {rules: [
+          ]},
         },
         url: {
           add: "/equipment_manage/elecBatterycharge/add",
@@ -88,7 +98,7 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model,'eqbatid','eqchardate','eqchartime','eqbatadmin','equesstate'))
+          this.form.setFieldsValue(pick(this.model,'eqbatid','eqchardate','eqchartime','eqbatadmin','equesstate','eqcharge','eqtext'))
         })
       },
       close () {
@@ -131,7 +141,7 @@
         this.close()
       },
       popupCallback(row){
-        this.form.setFieldsValue(pick(row,'eqbatid','eqchardate','eqchartime','eqbatadmin','equesstate'))
+        this.form.setFieldsValue(pick(row,'eqbatid','eqchardate','eqchartime','eqbatadmin','equesstate','eqcharge','eqtext'))
       },
 
       

@@ -22,6 +22,15 @@
         <a-form-item label="电池型号" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'eqbatmodel', validatorRules.eqbatmodel]" placeholder="请输入电池型号"></a-input>
         </a-form-item>
+        <a-form-item label="额定电压" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input-number v-decorator="[ 'eqbatvoltage', validatorRules.eqbatvoltage]" placeholder="请输入额定电压" style="width: 100%"/>
+        </a-form-item>
+        <a-form-item label="电池容量" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input-number v-decorator="[ 'eqbatcapacity', validatorRules.eqbatcapacity]" placeholder="请输入电池容量" style="width: 100%"/>
+        </a-form-item>
+        <a-form-item label="充电周期" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input-number v-decorator="[ 'eqbatcycle', validatorRules.eqbatcycle]" placeholder="请输入充电周期" style="width: 100%"/>
+        </a-form-item>
         <a-form-item label="上次充电日期" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <j-date placeholder="请选择上次充电日期" v-decorator="[ 'eqchargedate', validatorRules.eqchargedate]" :trigger-change="true" style="width: 100%"/>
         </a-form-item>
@@ -30,6 +39,9 @@
         </a-form-item>
         <a-form-item label="电池使用状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'eqbatuesstate', validatorRules.eqbatuesstate]" placeholder="请输入电池使用状态"></a-input>
+        </a-form-item>
+        <a-form-item label="电池充电详情" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqbatcharge', validatorRules.eqbatcharge]" placeholder="请输入电池充电详情"></a-input>
         </a-form-item>
         
       </a-form>
@@ -76,11 +88,19 @@
           ]},
           eqbatmodel: {rules: [
           ]},
+          eqbatvoltage: {rules: [
+          ]},
+          eqbatcapacity: {rules: [
+          ]},
+          eqbatcycle: {rules: [
+          ]},
           eqchargedate: {rules: [
           ]},
           eqchargestate: {rules: [
           ]},
           eqbatuesstate: {rules: [
+          ]},
+          eqbatcharge: {rules: [
           ]},
         },
         url: {
@@ -100,7 +120,7 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model,'eqid','eqbatcode','eqbatname','eqbatmodel','eqchargedate','eqchargestate','eqbatuesstate'))
+          this.form.setFieldsValue(pick(this.model,'eqid','eqbatcode','eqbatname','eqbatmodel','eqbatvoltage','eqbatcapacity','eqbatcycle','eqchargedate','eqchargestate','eqbatuesstate','eqbatcharge'))
         })
       },
       close () {
@@ -143,7 +163,7 @@
         this.close()
       },
       popupCallback(row){
-        this.form.setFieldsValue(pick(row,'eqid','eqbatcode','eqbatname','eqbatmodel','eqchargedate','eqchargestate','eqbatuesstate'))
+        this.form.setFieldsValue(pick(row,'eqid','eqbatcode','eqbatname','eqbatmodel','eqbatvoltage','eqbatcapacity','eqbatcycle','eqchargedate','eqchargestate','eqbatuesstate','eqbatcharge'))
       }
       
     }

@@ -4,6 +4,35 @@
     <div class="table-page-search-wrapper">
       <a-form layout="inline" @keyup.enter.native="searchQuery">
         <a-row :gutter="24">
+          <a-col :md="6" :sm="8">
+            <a-form-item label="设备编号">
+              <a-input placeholder="请输入设备编号" v-model="queryParam.eqcode"></a-input>
+            </a-form-item>
+          </a-col>
+          <a-col :md="6" :sm="8">
+            <a-form-item label="领用状态">
+              <a-input placeholder="请输入领用状态" v-model="queryParam.eqflag"></a-input>
+            </a-form-item>
+          </a-col>
+          <template v-if="toggleSearchStatus">
+            <a-col :md="12" :sm="16">
+              <a-form-item label="近期使用日期">
+                <j-date placeholder="请选择开始日期" class="query-group-cust" v-model="queryParam.equsedate_begin"></j-date>
+                <span class="query-group-split-cust"></span>
+                <j-date placeholder="请选择结束日期" class="query-group-cust" v-model="queryParam.equsedate_end"></j-date>
+              </a-form-item>
+            </a-col>
+          </template>
+          <a-col :md="6" :sm="8" >
+            <span style="float: left;overflow: hidden;" class="table-page-search-submitButtons">
+              <a-button type="primary" @click="searchQuery" icon="search">查询</a-button>
+              <a-button type="primary" @click="searchReset" icon="reload" style="margin-left: 8px">重置</a-button>
+              <a @click="handleToggleSearch" style="margin-left: 8px">
+                {{ toggleSearchStatus ? '收起' : '展开' }}
+                <a-icon :type="toggleSearchStatus ? 'up' : 'down'"/>
+              </a>
+            </span>
+          </a-col>
 
         </a-row>
       </a-form>
@@ -92,11 +121,13 @@
 
   import { JeecgListMixin } from '@/mixins/JeecgListMixin'
   import ElecUseModal from './modules/ElecUseModal'
+  import JDate from '@/components/jeecg/JDate.vue'
 
   export default {
     name: "ElecUseList",
     mixins:[JeecgListMixin],
     components: {
+      JDate,
       ElecUseModal
     },
     data () {

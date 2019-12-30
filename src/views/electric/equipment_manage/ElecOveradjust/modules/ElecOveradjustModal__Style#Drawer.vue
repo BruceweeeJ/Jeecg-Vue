@@ -19,14 +19,38 @@
         <a-form-item label="检修状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'eqoverstate', validatorRules.eqoverstate]" placeholder="请输入检修状态"></a-input>
         </a-form-item>
+        <a-form-item label="检修情况" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqoverconditionlast', validatorRules.eqoverconditionlast]" placeholder="请输入检修情况"></a-input>
+        </a-form-item>
+        <a-form-item label="检修单位" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqoverunitlast', validatorRules.eqoverunitlast]" placeholder="请输入检修单位"></a-input>
+        </a-form-item>
         <a-form-item label="校准日期" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <j-date placeholder="请选择校准日期" v-decorator="[ 'eqadjustdatelast', validatorRules.eqadjustdatelast]" :trigger-change="true" style="width: 100%"/>
         </a-form-item>
         <a-form-item label="校准状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'eqadjuststate', validatorRules.eqadjuststate]" placeholder="请输入校准状态"></a-input>
         </a-form-item>
+        <a-form-item label="校准情况" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqadjustconditionlast', validatorRules.eqadjustconditionlast]" placeholder="请输入校准情况"></a-input>
+        </a-form-item>
+        <a-form-item label="校准单位" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqadjustunitlast', validatorRules.eqadjustunitlast]" placeholder="请输入校准单位"></a-input>
+        </a-form-item>
         <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'eqtext', validatorRules.eqtext]" placeholder="请输入备注"></a-input>
+        </a-form-item>
+        <a-form-item label="创建人" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'createBy', validatorRules.createBy]" placeholder="请输入创建人"></a-input>
+        </a-form-item>
+        <a-form-item label="创建时间" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <j-date placeholder="请选择创建时间" v-decorator="[ 'createTime', validatorRules.createTime]" :trigger-change="true" style="width: 100%"/>
+        </a-form-item>
+        <a-form-item label="更新人" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'updateBy', validatorRules.updateBy]" placeholder="请输入更新人"></a-input>
+        </a-form-item>
+        <a-form-item label="更新日期" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <j-date placeholder="请选择更新日期" v-decorator="[ 'updateTime', validatorRules.updateTime]" :trigger-change="true" style="width: 100%"/>
         </a-form-item>
         
       </a-form>
@@ -71,11 +95,27 @@
           ]},
           eqoverstate: {rules: [
           ]},
+          eqoverconditionlast: {rules: [
+          ]},
+          eqoverunitlast: {rules: [
+          ]},
           eqadjustdatelast: {rules: [
           ]},
           eqadjuststate: {rules: [
           ]},
+          eqadjustconditionlast: {rules: [
+          ]},
+          eqadjustunitlast: {rules: [
+          ]},
           eqtext: {rules: [
+          ]},
+          createBy: {rules: [
+          ]},
+          createTime: {rules: [
+          ]},
+          updateBy: {rules: [
+          ]},
+          updateTime: {rules: [
           ]},
         },
         url: {
@@ -95,7 +135,7 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model,'eqid','eqoverdatelast','eqoverstate','eqadjustdatelast','eqadjuststate','eqtext'))
+          this.form.setFieldsValue(pick(this.model,'eqid','eqoverdatelast','eqoverstate','eqoverconditionlast','eqoverunitlast','eqadjustdatelast','eqadjuststate','eqadjustconditionlast','eqadjustunitlast','eqtext','createBy','createTime','updateBy','updateTime'))
         })
       },
       close () {
@@ -138,7 +178,7 @@
         this.close()
       },
       popupCallback(row){
-        this.form.setFieldsValue(pick(row,'eqid','eqoverdatelast','eqoverstate','eqadjustdatelast','eqadjuststate','eqtext'))
+        this.form.setFieldsValue(pick(row,'eqid','eqoverdatelast','eqoverstate','eqoverconditionlast','eqoverunitlast','eqadjustdatelast','eqadjuststate','eqadjustconditionlast','eqadjustunitlast','eqtext','createBy','createTime','updateBy','updateTime'))
       }
       
     }

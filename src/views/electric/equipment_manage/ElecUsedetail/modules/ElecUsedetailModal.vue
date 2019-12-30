@@ -34,6 +34,9 @@
         <a-form-item label="设备使用情况" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'equsestate', validatorRules.equsestate]" placeholder="请输入设备使用情况"></a-input>
         </a-form-item>
+        <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'eqtext', validatorRules.eqtext]" placeholder="请输入备注"></a-input>
+        </a-form-item>
 
       </a-form>
     </a-spin>
@@ -85,6 +88,8 @@
           ]},
           equsestate: {rules: [
           ]},
+          eqtext: {rules: [
+          ]},
         },
         url: {
           add: "/equipment_manage/elecUsedetail/add",
@@ -103,7 +108,7 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model,'eqid','equsedate','equseunit','equsepeople','equseadmin','eqflagstate','eqreturndate','equsestate'))
+          this.form.setFieldsValue(pick(this.model,'eqid','equsedate','equseunit','equsepeople','equseadmin','eqflagstate','eqreturndate','equsestate','eqtext'))
         })
       },
       close () {
@@ -146,7 +151,7 @@
         this.close()
       },
       popupCallback(row){
-        this.form.setFieldsValue(pick(row,'eqid','equsedate','equseunit','equsepeople','equseadmin','eqflagstate','eqreturndate','equsestate'))
+        this.form.setFieldsValue(pick(row,'eqid','equsedate','equseunit','equsepeople','equseadmin','eqflagstate','eqreturndate','equsestate','eqtext'))
       },
 
       
